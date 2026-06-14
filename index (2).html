@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スタートガイド｜進み方選択</title>
+  <style>
+    :root{
+      --pink:#d9a7b0;
+      --rose:#fff7f8;
+      --gold:#c7a35a;
+      --brown:#5b4636;
+      --text:#3b2f2f;
+      --line:#06C755;
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+      background:linear-gradient(180deg,#fff7f8 0%,#ffffff 48%,#f8eef0 100%);
+      color:var(--text);
+      line-height:1.8;
+    }
+    .wrap{
+      max-width:780px;
+      margin:0 auto;
+      padding:24px 16px 70px;
+    }
+    .hero,.card{
+      background:#fff;
+      border-radius:28px;
+      padding:26px 20px;
+      box-shadow:0 14px 38px rgba(91,70,54,.09);
+      border:1px solid rgba(199,163,90,.28);
+    }
+    .hero{
+      text-align:center;
+      background:linear-gradient(135deg,#fff,#fff7f8);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:999px;
+      background:rgba(217,167,176,.22);
+      top:-80px;
+      right:-70px;
+    }
+    .badge{
+      display:inline-block;
+      padding:6px 14px;
+      border-radius:999px;
+      background:#fff;
+      color:var(--gold);
+      border:1px solid rgba(199,163,90,.45);
+      font-size:13px;
+      font-weight:700;
+      position:relative;
+      z-index:1;
+    }
+    h1{
+      margin:16px 0 10px;
+      color:var(--brown);
+      font-size:26px;
+      line-height:1.45;
+      position:relative;
+      z-index:1;
+    }
+    .lead{
+      margin:0;
+      color:#6b5550;
+      font-size:15px;
+      position:relative;
+      z-index:1;
+    }
+    .card{margin-top:18px;}
+    h2{
+      margin:0 0 14px;
+      font-size:20px;
+      color:var(--brown);
+      border-left:5px solid var(--gold);
+      padding-left:10px;
+    }
+    .course{
+      padding:18px;
+      border-radius:22px;
+      background:#fffdfd;
+      border:1px solid #ead6d9;
+      margin-top:16px;
+      transition:.2s ease;
+    }
+    .course:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(91,70,54,.08);
+    }
+    .course h3{
+      margin:0 0 8px;
+      font-size:20px;
+      color:#4e3a34;
+    }
+    .course p{
+      margin:0 0 12px;
+      font-size:14px;
+      color:#6b5550;
+    }
+    .tag{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      background:#fff7f8;
+      color:#8b5f66;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .flow{
+      background:#fffaf0;
+      border:1px solid rgba(199,163,90,.25);
+      border-radius:16px;
+      padding:12px 14px;
+      margin:12px 0;
+      font-size:14px;
+    }
+    .btn{
+      display:block;
+      width:100%;
+      border:none;
+      border-radius:999px;
+      padding:15px 18px;
+      font-size:16px;
+      font-weight:800;
+      text-align:center;
+      text-decoration:none;
+      cursor:pointer;
+      margin-top:12px;
+    }
+    .gold{
+      background:linear-gradient(135deg,var(--gold),#e5c879);
+      color:#fff;
+      box-shadow:0 10px 20px rgba(199,163,90,.25);
+    }
+    .pink{
+      background:linear-gradient(135deg,var(--pink),#e8bdc5);
+      color:#fff;
+    }
+    .line{
+      background:var(--line);
+      color:#fff;
+    }
+    .brown{
+      background:linear-gradient(135deg,#6b5142,#9a7a5b);
+      color:#fff;
+    }
+    label{
+      display:block;
+      font-weight:700;
+      margin:18px 0 8px;
+      color:#4d3a34;
+    }
+    input[type="text"], textarea, select{
+      width:100%;
+      border:1px solid #ead6d9;
+      border-radius:14px;
+      padding:13px 14px;
+      font-size:16px;
+      background:#fffdfd;
+      color:var(--text);
+      outline:none;
+    }
+    textarea{
+      min-height:90px;
+      resize:vertical;
+    }
+    .notice{
+      margin-top:16px;
+      padding:14px;
+      border-radius:18px;
+      background:#fffaf0;
+      border:1px solid rgba(199,163,90,.3);
+      font-size:14px;
+      color:#6b5550;
+    }
+    .result{
+      display:none;
+      margin-top:18px;
+      padding:16px;
+      border-radius:18px;
+      background:#f8fff9;
+      border:1px solid rgba(6,199,85,.25);
+      white-space:pre-wrap;
+      font-size:14px;
+    }
+    .nextbox{
+      display:none;
+      margin-top:18px;
+      padding:18px;
+      border-radius:22px;
+      background:#fff7f8;
+      border:1px solid #ead6d9;
+      text-align:center;
+    }
+    .nextbox h3{
+      margin:0 0 8px;
+      color:var(--brown);
+    }
+    .nextbox p{
+      margin:0 0 12px;
+      color:#6b5550;
+      font-size:14px;
+    }
+    .footer{
+      text-align:center;
+      color:#9a8580;
+      font-size:12px;
+      margin-top:28px;
+    }
+    @media (max-width:480px){
+      h1{font-size:23px;}
+      .card,.hero{padding:22px 16px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">Start Guide</span>
+      <h1>スタートガイド用LINE登録<br>ありがとうございます</h1>
+      <p class="lead">
+        動画をご覧いただきありがとうございます。<br>
+        まずはあなたに合った進み方をお選びください。<br>
+        無理な勧誘はありませんのでご安心ください。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>今のあなたに一番近いものを選んでください</h2>
+
+      <div class="course">
+        <span class="tag">学びから始める</span>
+        <h3>📚 まず学びたい</h3>
+        <p>内容を理解してから判断したい方におすすめです。</p>
+        <div class="flow">
+          <strong>流れ</strong><br>
+          1. ウェルマックス無料登録<br>
+          2. 人生スキル向上サロン無料登録<br>
+          3. 1ヶ月間、学びの内容を閲覧<br>
+          4. 希望者のみビジネス登録へ
+        </div>
+        <button class="btn pink" onclick="selectCourse('まず学びたい')">📚 まずは学びからスタートする</button>
+      </div>
+
+      <div class="course">
+        <span class="tag">すぐに始める</span>
+        <h3>🚀 今すぐスタートしたい</h3>
+        <p>学びながら実践したい方におすすめです。</p>
+        <div class="flow">
+          <strong>流れ</strong><br>
+          1. エステレラ登録<br>
+          2. ウェルマックス登録<br>
+          3. 人生スキル向上サロン登録<br>
+          4. 活動スタート
+        </div>
+        <button class="btn gold" onclick="selectCourse('今すぐスタートしたい')">🚀 今すぐスタートする</button>
+      </div>
+
+      <div class="course">
+        <span class="tag">相談して決める</span>
+        <h3>💬 質問してから決めたい</h3>
+        <p>不安や疑問を解消してから進みたい方におすすめです。</p>
+        <div class="flow">
+          <strong>流れ</strong><br>
+          1. スタートガイド用LINEで質問<br>
+          2. 個別に疑問点を確認<br>
+          3. 必要に応じてZoom相談<br>
+          4. 納得してから次のステップへ
+        </div>
+        <button class="btn brown" onclick="selectCourse('質問してから決めたい')">💬 質問してから決める</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>回答内容をLINEで送る</h2>
+
+      <label for="name">お名前</label>
+      <input type="text" id="name" placeholder="例：春日 晴日">
+
+      <label for="course">選択した進み方</label>
+      <select id="course">
+        <option value="">選択してください</option>
+        <option value="まず学びたい">まず学びたい</option>
+        <option value="今すぐスタートしたい">今すぐスタートしたい</option>
+        <option value="質問してから決めたい">質問してから決めたい</option>
+      </select>
+
+      <label for="question">不安な点・確認したいこと</label>
+      <textarea id="question" placeholder="例：無料登録の流れ、1ヶ月後の流れ、登録手順、費用、活動方法など"></textarea>
+
+      <button type="button" class="btn gold" onclick="makeMessage()">回答内容を作成する</button>
+      <a id="lineShare" class="btn line" href="#" target="_blank" rel="noopener">LINEのメッセージ欄に回答を入れる</a>
+
+      <div id="nextBox" class="nextbox">
+        <h3 id="nextTitle">次のステップ</h3>
+        <p id="nextText">回答内容に合わせて次の案内へ進めます。</p>
+        <a id="lineDirect" class="btn line" href="#" target="_blank" rel="noopener">この内容をLINEで送信する</a>
+      </div>
+
+      <div class="notice">
+        ※「LINEのメッセージ欄に回答を入れる」を押すと、回答内容がLINEの入力欄に入った状態で開きます。<br>
+        ※あとはLINE画面で送信ボタンを押すだけです。<br>
+        ※まず学びたい方は、無料登録後に1ヶ月間学びの内容を閲覧できます。<br>
+        ※「まず学びたい」「今すぐスタートしたい」を選んだ方は、登録サポート用LINEへ進めます。
+      </div>
+
+      <div id="result" class="result"></div>
+    </section>
+
+    <p class="footer">© Start Guide</p>
+  </main>
+
+  <script>
+    function selectCourse(value){
+      document.getElementById("course").value = value;
+      makeMessage();
+      document.getElementById("course").scrollIntoView({behavior:"smooth", block:"center"});
+    }
+
+    function makeMessage(){
+      const name = document.getElementById("name").value || "未入力";
+      const course = document.getElementById("course").value || "未選択";
+      const question = document.getElementById("question").value || "特になし";
+
+      const message =
+`【スタートガイド方向性アンケート】
+
+お名前：${name}
+
+選択した進み方：
+${course}
+
+不安な点・確認したいこと：
+${question}
+
+よろしくお願いします。`;
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").textContent = message;
+
+      // LINEのメッセージ入力欄に回答内容を入れるURL
+      const lineMessageUrl = "https://line.me/R/msg/text/?" + encodeURIComponent(message);
+
+      document.getElementById("lineShare").href = lineMessageUrl;
+      document.getElementById("lineDirect").href = lineMessageUrl;
+
+      const nextBox = document.getElementById("nextBox");
+      const nextTitle = document.getElementById("nextTitle");
+      const nextText = document.getElementById("nextText");
+
+      nextBox.style.display = "block";
+
+      if(course === "今すぐスタートしたい"){
+        nextTitle.textContent = "今すぐスタートしたい方へ";
+        nextText.textContent = "回答内容をLINEで送った後、登録サポート用LINEへ進んでください。登録手順をご案内します。";
+        document.getElementById("lineDirect").textContent = "登録サポート用LINEへ進む";
+        document.getElementById("lineDirect").href = "https://lin.ee/wlSRP2EN";
+      }else if(course === "まず学びたい"){
+        nextTitle.textContent = "まず学びたい方へ";
+        nextText.textContent = "回答内容をLINEで送った後、登録サポート用LINEへ進んでください。無料登録の流れをご案内します。";
+        document.getElementById("lineDirect").textContent = "登録サポート用LINEへ進む";
+        document.getElementById("lineDirect").href = "https://lin.ee/wlSRP2EN";
+      }else if(course === "質問してから決めたい"){
+        nextTitle.textContent = "質問してから決めたい方へ";
+        nextText.textContent = "回答内容がLINEのメッセージ欄に入ります。LINE画面で送信ボタンを押してください。";
+        document.getElementById("lineDirect").textContent = "この内容をLINEで送信する";
+        document.getElementById("lineDirect").href = lineMessageUrl;
+      }else{
+        nextTitle.textContent = "次のステップ";
+        nextText.textContent = "まずは今の方向性を選んでください。";
+        document.getElementById("lineDirect").textContent = "この内容をLINEで送信する";
+        document.getElementById("lineDirect").href = lineMessageUrl;
+      }
+    }
+  </script>
+</body>
+</html>
